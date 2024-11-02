@@ -1,0 +1,19 @@
+.admin-dashboard {
+    padding: 20px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.admin-content {
+    margin-top: 20px;
+}

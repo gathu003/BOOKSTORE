@@ -1,0 +1,14 @@
+.add-book {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.add-book form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-book input {
+    margin-bottom: 10px;
+    padding: 10px;
+}

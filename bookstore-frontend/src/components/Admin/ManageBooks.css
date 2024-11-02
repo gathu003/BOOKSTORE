@@ -1,0 +1,13 @@
+.manage-books {
+    padding: 20px;
+}
+
+.manage-books table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.manage-books th, .manage-books td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
