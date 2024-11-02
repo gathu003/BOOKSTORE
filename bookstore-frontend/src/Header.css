@@ -1,0 +1,25 @@
+/* src/components/Header.css */
+.header {
+    background-color: #f8f9fa; /* Light background */
+    padding: 20px;
+    text-align: center;
+}
+
+.nav {
+    margin-top: 10px;
+}
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.nav a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.active {
+    font-weight: bold; /* Highlight the active link */
+    color: #0056b3; /* Darker shade for active link */
+}

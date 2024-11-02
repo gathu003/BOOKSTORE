@@ -1,3 +1,5 @@
+/* src/App.css */
+
 .App {
   text-align: center;
 }
@@ -30,25 +32,26 @@
 
 /* New styles for navigation */
 nav {
-  background-color: #f8f8f8;
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Light background for the navbar */
+  padding: 1rem 2rem; /* Added horizontal padding */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slightly darker shadow */
 }
 
 nav ul {
   list-style-type: none;
   display: flex;
-  gap: 1rem;
+  gap: 2rem; /* Increased spacing for better separation */
 }
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: #333; /* Dark color for text */
   font-weight: bold;
+  font-size: 1.1rem; /* Slightly larger font size */
 }
 
 nav a:hover {
-  color: #61dafb; /* Change color on hover */
+  color: #007bff; /* Bootstrap primary color for hover effect */
 }
 
 nav button {
@@ -57,5 +60,41 @@ nav button {
   cursor: pointer;
   color: #333;
   font-size: 1rem;
+}
+
+button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text for contrast */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Slightly rounded corners */
+  padding: 0.5rem 1rem; /* Padding for better touch area */
+  font-size: 1rem; /* Standard button size */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Footer styles */
+footer {
+  background-color: #f8f8f8; /* Light background */
+  padding: 1rem; /* Padding for spacing */
+  text-align: center; /* Center text */
+  position: relative; /* Ensures proper placement */
+  bottom: 0; /* Stick to the bottom */
+  width: 100%; /* Full width */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack links vertically */
+    gap: 0.5rem; /* Smaller gap on mobile */
+  }
 }
 

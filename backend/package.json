@@ -4,7 +4,9 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.js",
+    "migrate": "prisma migrate deploy",
+    "setup": "npm run migrate && npm run seed"
   },
   "keywords": [],
   "author": "",
@@ -37,10 +39,3 @@
     "collectCoverage": true
   }
 }
-
-
-
-
-
-
-

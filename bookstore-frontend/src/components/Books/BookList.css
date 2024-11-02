@@ -1,0 +1,65 @@
+/* BookList.css */
+
+.book-list-container {
+    background-color: #f7f9fc; /* Light background for entire section */
+    padding: 2rem 0;
+}
+
+.book-card {
+    background-color: #ffffff; /* White card background */
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.book-image {
+    max-height: 250px; /* Adjust image size */
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #6c757d; /* Soft text color */
+}
+
+.price-text {
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-custom {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #45A049;
+}
+
+.view-details {
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-left: 10px;
+    margin-top: 0.5rem;
+}
+
+.view-details:hover {
+    background-color: #0056b3;
+}

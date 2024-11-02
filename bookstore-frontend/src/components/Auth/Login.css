@@ -1,0 +1,26 @@
+/* Login.css */
+
+.login-container {
+    max-width: 400px; /* Set max width for better readability */
+    margin: auto; /* Center the form horizontally */
+    padding: 20px; /* Add padding around the container */
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.form-input {
+    margin-bottom: 15px; /* Space between inputs */
+}
+
+h1 {
+    color: #343a40; /* Darker color for the heading */
+}
+
+.alert {
+    text-align: center; /* Center align the alert message */
+}
+
+button {
+    width: 100%; /* Full width button */
+}

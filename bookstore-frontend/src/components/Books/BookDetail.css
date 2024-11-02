@@ -1,0 +1,38 @@
+/* BookDetail.css */
+
+.book-detail-container {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.book-cover {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-details {
+    margin-top: 20px;
+}
+
+.book-description {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.book-author, .book-price {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.add-to-cart-button {
+    background-color: #28a745; /* Success color */
+    border: none;
+}
+
+.add-to-cart-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}

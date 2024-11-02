@@ -1,0 +1,31 @@
+/* Checkout.css */
+
+.checkout-container {
+    max-width: 600px; /* Set max width for better readability */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Add padding around the container */
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.cart-item {
+    border: 1px solid #dee2e6; /* Light border for items */
+    margin-bottom: 10px; /* Space between items */
+}
+
+h1 {
+    color: #343a40; /* Darker color for the heading */
+}
+
+h2 {
+    color: #28a745; /* Green color for total price */
+}
+
+.text-center {
+    margin: 20px 0; /* Spacing for text center elements */
+}
+
+button {
+    width: 150px; /* Set width for buttons */
+}

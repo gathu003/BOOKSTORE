@@ -1,0 +1,133 @@
+/* Homepage.css */
+
+/* General page background */
+.homepage-container {
+    background-color: #f8f9fa; /* Light background color */
+    padding-bottom: 2rem;
+}
+
+/* Navbar styling */
+.navbar-custom {
+    background-color: #ffffff; /* White background for navbar */
+    border-bottom: 1px solid #e0e0e0; /* Light border for separation */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333333; /* Dark text color for brand */
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #555555; /* Medium text color for links */
+    margin-right: 1.5rem; /* Spacing between links */
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Blue color on hover */
+}
+
+/* Search form styling */
+.search-form {
+    max-width: 400px;
+}
+
+.search-button {
+    border-radius: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+/* Featured Books Section */
+.featured-books-container {
+    padding: 2rem;
+}
+
+.featured-books-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Book card styling */
+.book-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 200px; /* Thumbnail size */
+}
+
+.book-card-body {
+    padding: 1rem;
+}
+
+.book-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+.book-card-text {
+    color: #666666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.book-card-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.book-card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.add-to-cart-button,
+.view-details-button {
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.add-to-cart-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.view-details-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #777777;
+    font-size: 0.9rem;
+}

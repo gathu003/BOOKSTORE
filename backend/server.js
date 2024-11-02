@@ -6,11 +6,16 @@ const { getAllBooks, getBookById, createBook, updateBook, deleteBook } = require
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const stripe = Stripe(sk_test_51QGRSQIoLxOczx23rV7xQGdb913AQx4WuEggdMkFqovQt2EBzv3LG30neEun0rZo40pTVm8IMHIbIaY4rwUrzmI400bbAXdeOW); // Replace with your Stripe secret key
+const stripe = Stripe('sk_test_51QGRSQIoLxOczx23rV7xQGdb913AQx4WuEggdMkFqovQt2EBzv3LG30neEun0rZo40pTVm8IMHIbIaY4rwUrzmI400bbAXdeOW'); // Replace with your Stripe secret key
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+// Add a route for the root URL
+app.get('/', (req, res) => {
+    res.send('Welcome to the BOOKSTORE API!'); // Welcome message
+});
 
 // Routes
 app.get('/api/books', getAllBooks); // Get all books
@@ -48,5 +53,6 @@ const calculateOrderAmount = (items) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
