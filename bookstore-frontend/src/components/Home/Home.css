@@ -1,0 +1,6 @@
+.medium-img {
+    width: 100%;
+    max-width: 300px;  /* Adjust this value for desired medium size */
+    height: auto;
+    object-fit: cover;
+}

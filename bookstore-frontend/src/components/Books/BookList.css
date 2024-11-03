@@ -19,8 +19,9 @@
 }
 
 .book-image {
-    max-height: 250px; /* Adjust image size */
-    object-fit: cover;
+    max-height: 200px; /* Adjust image size for smaller cards */
+    width: 100%; /* Ensure the image covers the width of the card */
+    object-fit: cover; /* Maintain aspect ratio without stretching */
 }
 
 .card-title {
@@ -39,7 +40,7 @@
 }
 
 .btn-custom {
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Green button */
     color: white;
     border-radius: 20px;
     padding: 0.5rem 1rem;
@@ -48,11 +49,11 @@
 }
 
 .btn-custom:hover {
-    background-color: #45A049;
+    background-color: #45A049; /* Darker green on hover */
 }
 
 .view-details {
-    background-color: #007bff;
+    background-color: #007bff; /* Blue button */
     color: white;
     border-radius: 20px;
     padding: 0.5rem 1rem;
@@ -61,5 +62,6 @@
 }
 
 .view-details:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
+

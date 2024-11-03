@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY); // Initialize Stripe with your secret key
 require("dotenv").config();
 
 const app = express();
@@ -294,7 +295,7 @@ app.put("/api/books/:id", authenticateToken, async (req, res) => {
                 thumbnail,
                 publisher,
                 authors: {
-                    set: authors.map(authorId => ({ id: authorId })),
+                    connect: authors.map(authorId => ({ id: authorId })),
                 },
             },
         });
@@ -316,25 +317,40 @@ app.delete("/api/books/:id", authenticateToken, async (req, res) => {
     const { id } = req.params;
 
     try {
-        await prisma.book.delete({ where: { id: Number(id) } });
-        res.status(204).send();
+        const deletedBook = await prisma.book.delete({
+            where: { id: Number(id) },
+        });
+
+        res.status(200).json(deletedBook);
     } catch (error) {
         console.error("Error deleting book:", error);
         res.status(500).json({ message: "Internal server error" });
     }
 });
 
-// Global Error Handling Middleware
-app.use((err, req, res, next) => {
-    console.error("Global Error Handler:", err);
-    res.status(500).json({ message: "Internal server error" });
+// Payment Route
+app.post('/api/payment', authenticateToken, async (req, res) => {
+    const { amount, currency, paymentMethodId } = req.body; // Use paymentMethodId
+
+    try {
+        // Create a new charge with Stripe
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount, // amount in cents
+            currency,
+            payment_method: paymentMethodId, // Use paymentMethodId here
+            confirm: true, // Automatically confirm the payment
+        });
+
+        res.status(200).json({ success: true, charge: paymentIntent });
+    } catch (error) {
+        console.error("Payment error:", error);
+        res.status(500).json({ message: "Payment processing error", error });
+    }
 });
 
-// Server Start
-if (process.env.NODE_ENV !== 'test') {
-    app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-    });
-}
 
-module.exports = { app, prisma };
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+

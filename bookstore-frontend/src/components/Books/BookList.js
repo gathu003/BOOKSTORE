@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './BookList.css';
 
@@ -7,24 +6,31 @@ const BookList = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const response = await axios.get('http://localhost:3000/api/books');
-                console.log('Books fetched:', response.data);
+    // Updated book data with correct IDs and image URLs
+    const sampleBooks = [
+        {
+            id: 5, // Updated ID for Hitchhiker's Guide
+            title: "The Hitchhiker's Guide to the Galaxy",
+            description: "Seconds before the Earth is demolished to make way for a galactic freeway, Arthur Dent is plucked off the planet by his friend Ford Prefect, a researcher for the revised edition of The Hitchhiker's Guide to the Galaxy who, for the last fifteen years, has been posing as an out-of-work actor. Together this dynamic pair begin a journey through space aided by quotes from The Hitchhiker's Guide and a galaxy-full of fellow travelers.",
+            price: 5.60,
+            coverImage: "/OIP.jpeg" // Updated image URL
+        },
+        {
+            id: 4, // Updated ID for The Little Prince
+            title: "The Little Prince",
+            description: "A pilot stranded in the desert awakes one morning to see, standing before him, the most extraordinary little fellow. 'Please,' asks the stranger, 'draw me a sheep.' And the pilot realizes that when life's events are too difficult to understand, there is no choice but to succumb to their mysteries. Thus begins this wise and enchanting fable that has changed forever the world for its readers.",
+            price: 6.60,
+            coverImage: "/157993.jpg" // Updated image URL
+        }
+    ];
 
-                if (Array.isArray(response.data.books)) {
-                    setBooks(response.data.books);
-                } else {
-                    console.error('Expected an array but received:', response.data.books);
-                    setBooks([]);
-                }
-            } catch (error) {
-                console.error('Error fetching books:', error);
-                setBooks([]);
-            } finally {
+    useEffect(() => {
+        // Simulate an API call
+        const fetchBooks = () => {
+            setTimeout(() => {
+                setBooks(sampleBooks);
                 setLoading(false);
-            }
+            }, 1000); // Simulates a delay like an API call
         };
 
         fetchBooks();
@@ -92,6 +98,10 @@ const BookList = () => {
 };
 
 export default BookList;
+
+
+
+
 
 
 

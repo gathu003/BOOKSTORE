@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Container, Button, Alert, ListGroup, Form } from 'react-bootstrap';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'; // Import useStripe and useElements
 import './Checkout.css'; // Import the CSS file for styling
 
-const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY'); // Replace with your actual Stripe public key
+const stripePromise = loadStripe('pk_test_51QGRSQIoLxOczx23LXKYodQZDIC4USclSK0r0oJcrdwT2DVuTXgzoGoNKr9i64wI8CiIEfZrwFuMXEchN121BhJp00Mv86o3PB'); // Replace with your actual Stripe public key
 
 const Checkout = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -12,6 +13,8 @@ const Checkout = () => {
     const [error, setError] = useState(null);
     const [name, setName] = useState(''); // State for user's name
     const [address, setAddress] = useState(''); // State for user's address
+    const stripe = useStripe(); // Initialize Stripe
+    const elements = useElements(); // Initialize elements
 
     useEffect(() => {
         const fetchCartItems = () => {
@@ -29,35 +32,47 @@ const Checkout = () => {
     };
 
     const handleCheckout = async () => {
-        const stripe = await stripePromise;
+        if (!stripe || !elements) {
+            // Make sure to wait for Stripe to load
+            return;
+        }
 
         try {
-            const response = await fetch('/api/checkout', {
+            // Create a payment method using the CardElement
+            const { error, paymentMethod } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: elements.getElement(CardElement), // Use the CardElement to get the card details
+            });
+
+            if (error) {
+                throw new Error(error.message); // Handle errors from Stripe
+            }
+
+            const response = await fetch('/api/payment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ items: cartItems, name, address }), // Include user details
+                body: JSON.stringify({
+                    amount: totalPrice * 100, // Amount in cents
+                    currency: 'usd', // Currency can be changed if needed
+                    paymentMethodId: paymentMethod.id, // Use the paymentMethod.id received from Stripe
+                }),
             });
 
             if (!response.ok) {
-                throw new Error('Failed to create checkout session');
+                const errorResponse = await response.json(); // Get the error response from the server
+                throw new Error(errorResponse.message || 'Failed to process payment');
             }
 
-            const { clientSecret } = await response.json();
+            const { charge } = await response.json();
 
-            // Redirect to Checkout
-            const { error } = await stripe.redirectToCheckout({ clientSecret });
-            if (error) {
-                console.error('Stripe error:', error);
-                setError('Payment failed. Please try again.');
-            } else {
-                // Clear cart after successful payment
-                localStorage.removeItem('cart');
-            }
+            // Handle successful charge
+            console.log('Charge successful:', charge);
+            localStorage.removeItem('cart'); // Clear cart after successful payment
         } catch (error) {
-            console.error('Error during checkout:', error);
-            setError('An error occurred. Please try again.');
+            console.error('Error during payment:', error);
+            setError(error.message || 'An error occurred. Please try again.'); // Update the error state with a relevant message
         }
     };
 
@@ -103,6 +118,9 @@ const Checkout = () => {
                 </Form.Group>
             </Form>
 
+            {/* Add CardElement here for card details */}
+            <CardElement className="mt-4" />
+
             <div className="text-center">
                 <Button 
                     onClick={handleCheckout} 
@@ -118,6 +136,12 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+
+
+
+
+
 
 
 

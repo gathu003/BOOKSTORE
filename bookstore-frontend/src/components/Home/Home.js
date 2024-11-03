@@ -1,8 +1,7 @@
-// src/components/Home.js
 import React, { useState } from 'react';
-import BookList from '../Books/BookList'; // Adjust this import if necessary
-
-import { Container, Navbar, Nav, Form, FormControl, Button, Row, Col, Card } from 'react-bootstrap';
+import { Navbar, Container, Nav, Form, FormControl, Button, Card, Row, Col } from 'react-bootstrap';
+import BookList from '../Books/BookList'; // Adjust the import path based on your project structure
+import './Home.css'; // Import your new CSS file
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -13,13 +12,11 @@ const Home = () => {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        // Implement search logic here (e.g., filter BookList)
         console.log('Searching for:', searchQuery);
     };
 
     return (
         <div>
-            {/* Navbar */}
             <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand href="/">Bookstore</Navbar.Brand>
@@ -46,13 +43,16 @@ const Home = () => {
                 </Container>
             </Navbar>
 
-            {/* Main Content */}
             <Container className="mt-4">
-                {/* Featured Book Section */}
                 <Row className="mb-5">
                     <Col md={6}>
                         <Card>
-                            <Card.Img variant="top" src="path_to_featured_book_image.jpg" alt="Featured Book" />
+                            <Card.Img
+                                variant="top"
+                                src="/Becoming_(Michelle_Obama_book).jpg"
+                                alt="Becoming by Michelle Obama"
+                                className="medium-img" // Apply the CSS class here
+                            />
                             <Card.Body>
                                 <Card.Title>Becoming by Michelle Obama</Card.Title>
                                 <Card.Text>$22.99</Card.Text>
@@ -70,7 +70,6 @@ const Home = () => {
                     </Col>
                 </Row>
 
-                {/* Categories Section */}
                 <Row className="mb-5 text-center">
                     <Col md={4}>
                         <Card className="p-3 bg-light">
@@ -93,7 +92,6 @@ const Home = () => {
                     </Col>
                 </Row>
 
-                {/* Book List Section */}
                 <h2>Our Top Rated Books</h2>
                 <BookList />
             </Container>
@@ -102,6 +100,9 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
 
 
 
