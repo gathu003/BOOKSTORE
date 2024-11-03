@@ -19,7 +19,7 @@ import Footer from './components/Footer/Footer'; // Ensure Footer.js and Footer.
 import Home from './components/Home/Home'; // Ensure Home.js is in the right folder
 
 // Replace with your actual publishable key
-const stripePromise = loadStripe('your-publishable-key-here');
+const stripePromise = loadStripe('pk_test_51QGRSQIoLxOczx23LXKYodQZDIC4USclSK0r0oJcrdwT2DVuTXgzoGoNKr9i64wI8CiIEfZrwFuMXEchN121BhJp00Mv86o3PB');
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
