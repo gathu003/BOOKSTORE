@@ -2,7 +2,7 @@
   "name": "bookstore-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gathu003.github.io/BOOKSTORE",
+  "homepage": "https://gathu003.github.io/BOOKSTORE/",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
